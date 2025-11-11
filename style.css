@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --accent: #ff9800;
+  --accent2: #7b61ff;
+  --correct: #4caf50;
+  --wrong: #f44336;
+  --text: #ffffff;
+  --bg1: #1a2a6c;
+  --bg2: #b21f1f;
+  --bg3: #fdbb2d;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  color: var(--text);
+  overflow: hidden;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.quiz-app {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+.btn {
+  background: var(--accent2);
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.primary {
+  background: var(--accent);
+  color: #000;
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.answer {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s;
+  color: #fff;
+font-weight: 500;
+}
+
+.answer:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.answer.correct {
+  background: var(--correct);
+  color: #fff;
+  animation: glow 0.6s ease-out;
+}
+
+.answer.wrong {
+  background: var(--wrong);
+  color: #fff;
+  animation: shake 0.4s ease;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 0 rgba(0,255,0,0.7); }
+  to { box-shadow: 0 0 20px rgba(0,255,0,0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.progress-container {
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  height: 6px;
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.screen {
+  display: none;
+  animation: fade 0.5s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (max-width: 600px) {
+  #next-btn {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .answers {
+    margin-bottom: 15px;
+  }
+}
